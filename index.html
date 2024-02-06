@@ -49,9 +49,14 @@
           obj[key] = true;
         } else if (obj[key] === null) {
           delete obj[key];
+        } else {
+
         }
       }
+
+      return obj;
     }
+
 
 
 
@@ -60,11 +65,31 @@
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      if (text === "" || forbidden.length === 0) {
+        return text;
+      }
+
+      const words = text.split(" ");
+      const scrubbedWords = [];
+
+      for (let i = 0; i < words.length; i++) {
+        const index = forbidden.indexOf(words[i]);
+        if (index !== -1) {
+          scrubbedWords.push("x".repeat(words[i].length));
+        } else {
+          scrubbedWords.push(words[i]);
+        }
+      }
+
+      const result = scrubbedWords.join(" ");
+
+      return result;
 
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
+      
 
     }
 
