@@ -6,18 +6,57 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
-
+      if (profile.active) {
+        if (reason === undefined) {
+        return "confirm status manually";
+      } else {
+        return {active: false, reason: reason };
+      } 
+        } else {
+      return {active: true};
+      }
     }
-
+  
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+        return "invalid coordinates";
+    } else if (grid[x - 1][y - 1] === "🟥") {
+      return "🟥 💀";
+    } else if (grid[x - 1][y - 1] === "🟦") {
+      return "🟦 🥳";
     }
-
+      
+  }
     // 👉 CHALLENGE 3
-    function booleanize(obj) {
 
+
+//     ## Requirements
+// 1. Transform any value of zero (`0`) into the boolean `false`.
+// 2. Transform any value of one (`1`) into the boolean `true`.
+// 3. If a value is `null`, delete the entire key-value pair from the object.
+// 4. If any _property_ name exceeds 9 characters, return the string `"shorten all prop names to 9 chars or less"`.
+
+
+    function booleanize(obj) {
+      for (let key in obj) {
+        if (key.length > 9) {
+          return "shorten all prop names to 9 chars or less"
+        }
+        if (obj[key] === 0) {
+          obj[key] = false;
+        } else if (obj[key] === 1) {
+          obj[key] = true;
+        } else if (obj[key] === null) {
+          delete obj[key];
+        }
+      }
     }
+
+
+
+
+
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
